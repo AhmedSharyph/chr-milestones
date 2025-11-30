@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CHR Milestones Example</title>
+<script src="../dist/chrold-milestones.js"></script>
+<style>
+  .milestone-item { margin-bottom: 10px; }
+  label { margin-right: 10px; }
+</style>
+</head>
+<body>
+<h2>Child Milestones Example</h2>
+
+<input type="number" class="child-age" placeholder="Enter age in months">
+<div class="milestones-container"></div>
+
+<script>
+  const milestones = new CHRMilestones('.child-age', '.milestones-container');
+  document.querySelector('.child-age').addEventListener('input', () => {
+    milestones.loadMilestones();
+  });
+</script>
+</body>
+</html>
