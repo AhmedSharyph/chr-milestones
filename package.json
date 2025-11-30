@@ -1,0 +1,8 @@
+{
+  "name": "chrold-milestones",
+  "version": "1.0.0",
+  "description": "JavaScript library to dynamically display child milestones by age",
+  "main": "dist/chrold-milestones.js",
+  "author": "Your Name",
+  "license": "MIT"
+}
