@@ -1,12 +1,9 @@
-
----
-
-### **4. `dist/chrold-milestones.js`**
-```javascript
 class CHRMilestones {
   constructor(ageInputSelector, containerSelector) {
     this.ageInput = document.querySelector(ageInputSelector);
     this.container = document.querySelector(containerSelector);
+
+    // Full milestone dataset (example for 1-24 months, expandable)
     this.milestones = [
       { age: 1, label: "Startled by loud noises", name: "startle_noises" },
       { age: 2, label: "Smile Responsively", name: "smile" },
@@ -38,6 +35,8 @@ class CHRMilestones {
       { age: 24, label: "Kick Ball", name: "kick_ball" }
       // Add more milestones as needed
     ];
+ // Auto-bind input listener
+    this.ageInput.addEventListener('input', () => this.loadMilestones());
   }
 
   loadMilestones() {
@@ -48,10 +47,10 @@ class CHRMilestones {
     const matched = this.milestones.filter(m => m.age === age);
     matched.forEach(m => {
       const div = document.createElement('div');
-      div.classList.add('milestone-item');
+      div.className = "flex items-center gap-3 mb-2";
       div.innerHTML = `
-        <label>${m.label}</label>
-        <select name="${m.name}" class="milestone-select">
+        <label class="font-medium text-gray-700">${m.label}</label>
+        <select name="${m.name}" class="border rounded p-1 text-gray-700">
           <option value="">--Select--</option>
           <option value="yes">Yes</option>
           <option value="no">No</option>
@@ -61,3 +60,6 @@ class CHRMilestones {
     });
   }
 }
+
+// Expose globally
+window.CHRMilestones = CHRMilestones;
